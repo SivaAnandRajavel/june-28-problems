@@ -1,11 +1,12 @@
-def give_name(greet):
-    def wrapper(*args):
-        modified=print(greet())
-        return modified
-    return wrapper
+def printing(func):
+    def wrapper():
+        res = func()
+        return res
 
-@give_name('Theresa')
+    return wrapper
 def greeting():
     return 'Hello'
 
-print(greeting())
+
+decorate = printing(greeting)
+print(decorate(),"Theresa")

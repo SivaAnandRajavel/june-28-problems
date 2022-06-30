@@ -1,14 +1,40 @@
-def multiply(*nums):
-    mult = 1
-    for n in nums:
-        mult *= n
-    return mult
 
-#@execute_log
-def hello_world():
-    return 'hello world!!'
+def decor_square(func):
+    def inner():
+        result = func()
+        return result
 
-print(multiply(6, 2, 3)) # 36
-print(hello_world()) # hello world!!
-print(multiply(2.2, 4)) # 8.8
-print(hello_world()) # hello world!!
+    return decor_square
+
+
+def square(n):
+    print("=========Error!!")
+    print("The return type is NOT ", type(str(n)))
+    return n ** 2
+
+
+print(square(6))
+# output: =========Error!!
+# The return type is NOT <class 'str'>
+# 36
+
+# pass in a float
+
+
+def decor_square(func):
+    def inner():
+        result = func()
+        return result
+    return decor_square
+
+
+def square(n):
+    print("The return type is ", type(n))
+    return n ** 2
+
+#@check_return_type(float)
+def square(n):
+    print("The return type ",type(n))
+    return n ** 2
+
+print(square(2.9))
